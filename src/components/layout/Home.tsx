@@ -62,6 +62,10 @@ export const Home = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </span>
             </li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
           </ul>
         </div>
       </div>
