@@ -1,0 +1,142 @@
+.daytrai {
+  position: absolute;
+  width: 470px;
+  height: 200px;
+  top: 55px;
+  z-index: 1;
+}
+
+.dayphai {
+  position: absolute;
+  width: 470px;
+  height: 250px;
+  top: 30px;
+  left: 134.5vh;
+  z-index: 1;
+}
+
+.bg3 {
+  position: absolute;
+  width: 180vh;
+  height: 80vh;
+  top: 60px;
+  left: 60px;
+}
+
+.E_title {
+  position: absolute;
+  left: 510px;
+  top: 100px;
+  font-family: "iCiel Koni Black";
+  font-weight: 900;
+  font-size: 76px;
+  line-height: 100px;
+  color: #ffffff;
+}
+
+.E_box_all {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: absolute;
+  left: 145px;
+  top: 250px;
+}
+
+.E_box {
+  padding: 0px 0px 32px;
+  width: 280px;
+  height: 350px;
+  margin-left: 28px;
+  background: #ffffff;
+  box-shadow: 4px 4px 45px rgba(109, 46, 0, 0.35);
+  border-radius: 20px;
+}
+
+.detail {
+  width: 280px;
+  height: 180px;
+  border-radius: 20px 20px 0 0;
+}
+
+.E_box_text {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0px 0px 0px 24px;
+}
+
+.E_box_sk {
+  font-weight: 700;
+  font-size: 30px;
+  line-height: 37px;
+  color: #23221f;
+}
+
+.E_box_ds {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: #6c7272;
+}
+
+.E_box_time {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 16px;
+  color: #444444;
+  display: flex;
+  align-items: center;
+}
+
+.E_box_time span {
+  margin-top: 5px;
+  margin-left: 6px;
+}
+
+.E_box_m {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.005em;
+  color: #fa7d09;
+}
+
+.E_box_text button {
+  background: #ff000a;
+  width: 150px;
+  height: 30px;
+  box-shadow: 0px 4px 0px 0px #bd000b;
+  border-radius: 10px;
+  border: none;
+  margin-top: 10px;
+}
+
+.E_box_text button span {
+  position: absolute;
+  left: 20px;
+  top: 1px;
+  font-family: "iCiel Koni Black";
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 26px;
+  color: #ffffff;
+}
+
+.btntrai {
+  position: absolute;
+  width: 53px;
+  height: 56px;
+  top: 400px;
+  left: 95px;
+}
+
+.btnphai {
+  position: absolute;
+  width: 53px;
+  height: 56px;
+  top: 400px;
+  left: 173vh;
+}

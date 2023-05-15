@@ -1,0 +1,134 @@
+.bg4 {
+  position: absolute;
+  width: 193.5vh;
+  height: 85vh;
+  top: 75px;
+}
+
+.ED_title {
+  position: absolute;
+  left: 670px;
+  top: 100px;
+  font-family: "iCiel Koni Black";
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 100px;
+  color: #ffffff;
+}
+
+.boxdetail {
+  position: absolute;
+  width: 1210px;
+  height: 490px;
+  top: 230px;
+  left: 160px;
+}
+
+.duquay {
+  position: absolute;
+  width: 250px;
+  height: 230px;
+  left: 200px;
+  top: 290px;
+}
+
+.ED_box {
+  position: absolute;
+  width: 250px;
+  left: 200px;
+  top: 540px;
+}
+
+.ED_box_ds {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: #6c7272;
+}
+
+.ED_box_time {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 16px;
+  color: #444444;
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.ED_box_time span {
+  margin-top: 5px;
+  margin-left: 6px;
+}
+
+.ED_box_m {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 48px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.005em;
+  color: #fa7d09;
+}
+
+.ED_box_text {
+  position: absolute;
+  width: 250px;
+  top: 285px;
+  left: 112px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  align-items: center;
+  text-align: justify;
+}
+
+.ED_box_text span {
+  color: #fa7d09;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 36px;
+}
+
+.ED_box_col2 img {
+  position: absolute;
+  width: 250px;
+  height: 150px;
+  left: 24px;
+  top: 285px;
+  border-radius: 10px;
+}
+
+.ED_box_col2 span {
+  position: absolute;
+  width: 250px;
+  left: 24px;
+  top: 450px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  align-items: center;
+  text-align: justify;
+}
+
+.ED_box_col3 img {
+  position: absolute;
+  width: 250px;
+  height: 150px;
+  left: -64px;
+  top: 500px;
+  border-radius: 10px;
+}
+
+.ED_box_col3 span {
+  position: absolute;
+  width: 250px;
+  left: -64px;
+  top: 285px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  align-items: center;
+  text-align: justify;
+}

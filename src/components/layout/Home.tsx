@@ -30,13 +30,10 @@ export const Home = () => {
         <div className="box_text">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
           ac mollis justo. Etiam volutpat tellus quis risus volutpat, ut posuere
-          ex facilisis.
-          <br />
-          <br />
-          Suspendisse iaculis libero lobortis condimentum gravida. Aenean auctor
-          iaculis risus, lobortis molestie lectus consequat a.
+          ex facilisis. Suspendisse iaculis libero lobortis condimentum gravida.
+          Aenean auctor iaculis risus, lobortis molestie lectus consequat a.
         </div>
-        <div className="star1">
+        <div className="all_star">
           <ul>
             <li>
               <img className="star" src={star} alt="" />
@@ -62,10 +59,6 @@ export const Home = () => {
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </span>
             </li>
-            <li></li>
-            <li></li>
-            <li></li>
-            <li></li>
           </ul>
         </div>
       </div>

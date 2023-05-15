@@ -1,0 +1,86 @@
+.C_title {
+  position: absolute;
+  left: 661px;
+  top: 100px;
+  font-family: "iCiel Koni Black";
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 100px;
+  color: #ffffff;
+}
+
+.C_boxdetail {
+  position: absolute;
+  width: 750px;
+  height: 488px;
+  top: 220px;
+  left: 250px;
+}
+
+.C_box_title {
+  position: absolute;
+  width: 650px;
+  height: 60px;
+  top: 272px;
+  left: 315px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #23221f;
+  opacity: 0.7;
+}
+
+.form {
+  position: absolute;
+  /* width: 293px;
+  height: 56px;   */
+  top: 370px;
+  left: 315px;
+}
+
+.form input {
+  background: #ffffff;
+  box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+  border-radius: 16px;
+}
+
+.C_col1 input {
+  width: 250px;
+  height: 50px;
+}
+
+.C_col2 input {
+  width: 350px;
+  height: 50px;
+  margin-left: -26px;
+}
+
+.C_col_center input {
+  width: 624px;
+  height: 100px;
+}
+
+.C_col_center input::placeholder {
+    text-align: start;
+  }
+  
+
+.C_betrai {
+  position: absolute;
+  width: 300px;
+  height: 450px;
+  top: 270px;
+  left: -10px;
+}
+
+.C_box {
+  position: absolute;
+  top: 205px;
+  left: 1030px;
+}
+
+.C_box2 {
+  width: 420px;
+  height: 150px;
+  margin-top: 15px;
+}

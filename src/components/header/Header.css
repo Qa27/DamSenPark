@@ -5,14 +5,14 @@
   background: #ed7200;
   box-shadow: 0px 4px 35px rgba(162, 58, 0, 0.75);
   border-radius: 0 0 35% 35%;
-  z-index: 1;
+  z-index: 5;
 }
 
 .logo {
   position: absolute;
   width: 229px;
   height: 81px;
-  left: 201px;
+  left: 145px;
   top: 1px;
 }
 
@@ -20,7 +20,7 @@
   position: absolute;
   width: 890px;
   height: 42px;
-  left: 600px;
+  left: 480px;
   top: 18px;
 }
 
@@ -41,6 +41,10 @@
   color: #ffffff;
 }
 
+.nav_link {
+  margin-left: 50px;
+}
+
 .nav_link.active {
   box-sizing: border-box;
   flex-direction: row;
@@ -55,7 +59,7 @@
 
 .sdt {
   position: absolute;
-  left: 534px;
+  left: 685px;
   top: 11px;
 }
 

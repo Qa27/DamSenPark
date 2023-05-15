@@ -2,11 +2,12 @@ import React from "react";
 import "./Header.css";
 import { NavLink } from "react-router-dom";
 import Dt from "../assets/Dt.svg";
+import logo from "../assets/logo.png";
 
 export const Header = () => {
   return (
     <div className="h_box">
-      <img src="img/logo.png" className="logo" alt=""></img>
+      <img src={logo} className="logo" alt=""></img>
       <div className="h_btn">
         <ul>
           <li>
