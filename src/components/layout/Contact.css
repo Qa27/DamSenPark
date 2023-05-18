@@ -32,12 +32,11 @@
 
 .form {
   position: absolute;
-  /* width: 293px;
-  height: 56px;   */
-  top: 370px;
+  top: 365px;
   left: 315px;
 }
 
+.form textarea,
 .form input {
   background: #ffffff;
   box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
@@ -55,15 +54,38 @@
   margin-left: -26px;
 }
 
-.C_col_center input {
-  width: 624px;
+.C_col_center {
+  width: 118vh;
   height: 100px;
 }
 
-.C_col_center input::placeholder {
-    text-align: start;
-  }
-  
+.C_col_center textarea {
+  resize: none;
+}
+
+.C_submit {
+  position: absolute;
+  background: #ff000a;
+  width: 250px;
+  height: 46px;
+  top: -15px;
+  left: 185px;
+  box-shadow: 0px 4px 0px 0px #bd000b;
+  border-radius: 10px;
+}
+
+.C_submit:hover {
+  background: #ff000a !important;
+}
+
+.C_submit span {
+  font-family: "iCiel Koni Black";
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 25px;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+}
 
 .C_betrai {
   position: absolute;
@@ -79,8 +101,76 @@
   left: 1030px;
 }
 
-.C_box2 {
+.C_box_child {
   width: 420px;
   height: 150px;
   margin-top: 15px;
+}
+
+.C_address {
+  position: absolute;
+  width: 62px;
+  height: 62px;
+  top: 50px;
+  left: 40px;
+}
+
+.C_add_text {
+  position: absolute;
+  width: 250px;
+  height: 29px;
+  top: 50px;
+  left: 130px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #12265a;
+}
+
+.C_add_text2 {
+  position: absolute;
+  width: 250px;
+  height: 52px;
+  top: 80px;
+  left: 130px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  color: #23221f;
+  opacity: 0.7;
+}
+
+.C_mail {
+  top: 220px;
+  left: 40px;
+}
+
+.C_mail_text {
+  top: 225px;
+  left: 130px;
+}
+
+.C_mail_text2 {
+  top: 240px;
+  left: 130px;
+}
+
+.C_telephone {
+  top: 390px;
+  left: 40px;
+}
+
+.C_telephone_text {
+  top: 390px;
+  left: 130px;
+}
+
+.C_telephone_text2 {
+  top: 410px;
+  left: 130px;
 }

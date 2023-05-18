@@ -64,15 +64,15 @@
 .bg2 {
   position: absolute;
   width: fit-content;
-  height: 60vh;
-  top: 40vh;
-  left: 83.8vh;
+  height: 480px;
+  top: 310px;
+  left: 655px;
 }
 
 .boxve {
   position: absolute;
-  width: 155vh;
-  height: 53vh;
+  width: 1220px;
+  height: 420px;
   top: 310px;
   left: 180px;
 }

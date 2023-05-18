@@ -4,7 +4,12 @@ import { Header } from "../header/Header";
 import boxdetail from "../assets/boxdetail.png";
 import boxdetail2 from "../assets/boxdetail2.png";
 import betrai from "../assets/betrai.png";
-import { Col, Form, Input, Row } from "antd";
+import address from "../assets/address.png";
+import mail from "../assets/mail.png";
+import telephone from "../assets/telephone.png";
+import { Button, Col, Form, Input, Row } from "antd";
+
+const { TextArea } = Input;
 
 export const Contact = () => {
   return (
@@ -47,7 +52,17 @@ export const Contact = () => {
               </Col>
             </Row>
             <Form.Item name="description" className="C_col_center">
-              <Input placeholder="Lời nhắn" />
+              <TextArea placeholder="Lời nhắn" rows={4} />
+            </Form.Item>
+            <Form.Item>
+              <Button
+                // onClick={onSubmitBtn}
+                className="C_submit"
+                type="primary"
+                htmlType="submit"
+              >
+                Gửi liên hệ
+              </Button>
             </Form.Item>
           </Form>
         </div>
@@ -55,13 +70,26 @@ export const Contact = () => {
       <img className="C_betrai" src={betrai} alt="" />
       <div className="C_box">
         <div>
-          <img className="C_box2" src={boxdetail2} alt="" />
+          <img className="C_box_child" src={boxdetail2} alt="" />
+          <img className="C_address" src={address} alt="" />
+          <span className="C_add_text">Địa chỉ:</span>
+          <span className="C_add_text2">
+            86/33 Âu Cơ, Phường 9, Quận Tân Bình, TP. Hồ Chí Minh
+          </span>
         </div>
         <div>
-          <img className="C_box2" src={boxdetail2} alt="" />
+          <img className="C_box_child" src={boxdetail2} alt="" />
+          <img className="C_address C_mail" src={mail} alt="" />
+          <span className="C_add_text C_mail_text">Email:</span>
+          <span className="C_add_text2 C_mail_text2">
+            investigate@your-site.com
+          </span>
         </div>
         <div>
-          <img className="C_box2" src={boxdetail2} alt="" />
+          <img className="C_box_child" src={boxdetail2} alt="" />
+          <img className="C_address C_telephone" src={telephone} alt="" />
+          <span className="C_add_text C_telephone_text">Điện thoại:</span>
+          <span className="C_add_text2 C_telephone_text2">+84 145 689 798</span>
         </div>
       </div>
     </div>
