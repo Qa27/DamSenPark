@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Header } from "../header/Header";
 import "./Home.css";
 import logoDS from "../assets/logoDS.png";
@@ -9,8 +9,51 @@ import be2 from "../assets/be2.png";
 import bg2 from "../assets/bg2.png";
 import boxve from "../assets/boxve.png";
 import star from "../assets/star.png";
+import dropdown from "../assets/dropdown.svg";
+import schedule from "../assets/schedule.svg";
+import {
+  Button,
+  Col,
+  DatePicker,
+  Form,
+  Input,
+  RefSelectProps,
+  Row,
+  Select,
+} from "antd";
+import { useNavigate } from "react-router-dom";
+
+const { Option } = Select;
 
 export const Home = () => {
+  const navigate = useNavigate();
+  const [selectValue, setSelectValue] = useState("");
+  const [openDD, setOpenDD] = useState(false);
+  const [openSche, setOpenSche] = useState(false);
+  const selectRef = React.useRef<RefSelectProps>(null);
+
+  const handleDD = (selectValue: any) => {
+    setSelectValue(selectValue);
+    setOpenDD(false);
+  };
+
+  const handleSche = (selectValue: any) => {
+    setSelectValue(selectValue);
+    setOpenSche(false);
+  };
+
+  const DropdownBtn = () => {
+    setOpenDD((prevOpen) => !prevOpen);
+  };
+
+  const ScheduleBtn = () => {
+    setOpenSche((prevOpen) => !prevOpen);
+  };
+
+  const onSubmitBtn = () => {
+    navigate("/pay");
+  };
+
   return (
     <div>
       <Header />
@@ -61,6 +104,75 @@ export const Home = () => {
             </li>
           </ul>
         </div>
+      </div>
+      <div className="H_form">
+        <Form
+          name="basic"
+          labelCol={{ span: 8 }}
+          wrapperCol={{ span: 16 }}
+          style={{ maxWidth: 600 }}
+          //   onFinish={onFinish}
+          //   onFinishFailed={onFinishFailed}
+          autoComplete="off"
+        >
+          <Form.Item className="H_form_combo" name="combo">
+            <Select
+              open={openDD}
+              ref={selectRef}
+              onChange={handleDD}
+              placeholder="Các loại vé"
+              suffixIcon={<></>}
+            >
+              <Option value="Vé trọn gói">Vé trọn gói</Option>
+              <Option value="Vé vào cổng">Vé vào cổng</Option>
+            </Select>
+            <Button type="link" onClick={DropdownBtn}>
+              <img className="H_dropdown" src={dropdown} alt="" />
+            </Button>
+          </Form.Item>
+          <Row>
+            <Col span={8}>
+              <Form.Item className="H_form_col1" name="number">
+                <Input placeholder="Số lượng vé" />
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Form.Item className="H_form_col2" name="date">
+                <DatePicker
+                  open={openSche}
+                  onChange={handleSche}
+                  suffixIcon={<></>}
+                  placeholder="Ngày sử dụng"
+                  format="DD/MM/YYYY"
+                />
+              </Form.Item>
+            </Col>
+            <Col span={8}>
+              <Button type="link" onClick={ScheduleBtn}>
+                <img className="H_schedule" src={schedule} alt="" />
+              </Button>
+            </Col>
+          </Row>
+          <Form.Item name="fullname">
+            <Input className="H_form_input" placeholder="Họ và tên" />
+          </Form.Item>
+          <Form.Item name="phone">
+            <Input className="H_form_input" placeholder="Số điện thoại" />
+          </Form.Item>
+          <Form.Item name="address">
+            <Input className="H_form_input" placeholder="Địa chỉ email" />
+          </Form.Item>
+          <Form.Item>
+            <Button
+              onClick={onSubmitBtn}
+              className="H_submit"
+              type="primary"
+              htmlType="submit"
+            >
+              Đặt vé
+            </Button>
+          </Form.Item>
+        </Form>
       </div>
     </div>
   );

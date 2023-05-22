@@ -72,8 +72,8 @@
 .boxve {
   position: absolute;
   width: 1220px;
-  height: 420px;
-  top: 310px;
+  height: 430px;
+  top: 305px;
   left: 180px;
 }
 
@@ -109,4 +109,138 @@
   color: #23221f;
   opacity: 0.8;
   margin-left: 10px;
+}
+
+.H_form {
+  position: absolute;
+  left: 1000px;
+  top: 400px;
+}
+
+.H_form_combo .ant-select-selector,
+.H_form input {
+  margin-top: -15px;
+  background: #ffffff;
+  box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+  border-radius: 16px;
+}
+
+.H_form_col2 .ant-picker:hover,
+.H_form_combo .ant-select-selector:hover,
+.H_form input:hover {
+  border-color: rgba(179, 91, 11, 0.5) !important;
+}
+
+.H_form_col2 .ant-picker-focused,
+.H_form_combo .ant-select-focused .ant-select-selector,
+.H_form input:focus {
+  border-color: rgba(179, 91, 11, 0.5) !important;
+  box-shadow: none !important;
+}
+
+.H_form_combo {
+  margin-bottom: -8px;
+  width: 310px;
+}
+
+.H_form_combo .ant-select-selector {
+  align-items: center;
+  width: 310px !important;
+  height: 46px !important;
+}
+
+.H_form_combo span {
+  position: absolute;
+  width: 111px;
+  height: 26px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: #23221f;
+}
+
+.H_form_input {
+  width: 370px;
+  height: 46px;
+}
+
+.H_dropdown {
+  position: absolute;
+  left: 330px;
+  top: -47px;
+  filter: drop-shadow(0px 3px 2px #de9959);
+}
+
+.H_form_col1 input {
+  width: 120px;
+  height: 46px;
+}
+
+.H_form_col2 .ant-picker {
+  position: absolute;
+  width: 175px;
+  height: 46px;
+  left: -34px;
+  top: -14px;
+  background: #ffffff;
+  box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
+  border-radius: 16px;
+}
+
+.H_form_col2 {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  width: 360px;
+}
+
+.H_form_col2 input {
+  margin-top: 0px;
+  box-shadow: none;
+  border-radius: 0px;
+}
+
+.ant-picker-footer {
+  display: none;
+}
+
+.H_schedule {
+  position: absolute;
+  left: -11px;
+  top: -15px;
+  filter: drop-shadow(0px 3px 2px #de9959);
+}
+
+.H_form_col2 .ant-picker-input > input::placeholder,
+.H_form_combo .ant-select-selector .ant-select-selection-placeholder,
+.H_form .ant-input::placeholder {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  color: #989a9c;
+  opacity: 0.5;
+}
+
+.H_submit {
+  position: absolute;
+  background: #ff000a;
+  width: 250px;
+  height: 40px;
+  top: -18px;
+  left: 55px;
+  box-shadow: 0px 4px 0px 0px #bd000b;
+  border-radius: 10px;
+}
+
+.H_submit:hover {
+  background: #ff000a !important;
+}
+
+.H_submit span {
+  font-family: "iCiel Koni Black";
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 25px;
+  letter-spacing: 0.06em;
+  color: #ffffff;
 }

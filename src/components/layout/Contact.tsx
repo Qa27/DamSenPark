@@ -23,7 +23,7 @@ export const Contact = () => {
           ac mollis justo. Etiam volutpat tellus quis risus volutpat, ut posuere
           ex facilisis.
         </span>
-        <div className="form">
+        <div className="C_form">
           <Form
             name="basic"
             labelCol={{ span: 8 }}

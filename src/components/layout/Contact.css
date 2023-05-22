@@ -30,14 +30,23 @@
   opacity: 0.7;
 }
 
-.form {
+.C_form {
   position: absolute;
   top: 365px;
   left: 315px;
 }
 
-.form textarea,
-.form input {
+.C_form input:hover{
+  border-color: rgba(179, 91, 11, 0.5);
+}
+
+.C_form input:focus {
+  border-color: rgba(179, 91, 11, 0.5);
+  box-shadow: none;
+}
+
+.C_form textarea,
+.C_form input {
   background: #ffffff;
   box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5);
   border-radius: 16px;

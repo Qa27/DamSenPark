@@ -6,6 +6,7 @@ import { Event } from "./components/layout/Event";
 import BG1 from "./components/assets/BG1.png";
 import { EventDetail } from "./components/layout/EventDetail";
 import { Contact } from "./components/layout/Contact";
+import { Pay } from "./components/layout/Pay";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/event" Component={Event} />
         <Route path="/event/detail" Component={EventDetail} />
         <Route path="/contact" Component={Contact} />
+        <Route path="/pay" Component={Pay} />
       </Routes>
     </div>
   );

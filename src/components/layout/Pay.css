@@ -1,0 +1,155 @@
+.P_title {
+  position: absolute;
+  left: 580px;
+  top: 100px;
+  font-family: "iCiel Koni Black";
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 100px;
+  color: #ffffff;
+}
+
+.bepay {
+  position: absolute;
+  width: 230px;
+  height: 430px;
+  top: 280px;
+  z-index: 1;
+}
+
+.boxpay {
+  position: absolute;
+  width: 1220px;
+  height: 500px;
+  top: 220px;
+  left: 145px;
+}
+
+.P_form1 {
+  position: absolute;
+  width: 640px;
+  height: 400px;
+  left: 250px;
+  top: 300px;
+}
+
+.P_form_text3 .ant-picker,
+.P_form1 input,
+.P_form2 input {
+  background: #ffffff !important;
+  box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5) !important;
+  border-radius: 16px;
+  height: 46px;
+}
+
+.P_form_text3 .ant-picker:hover,
+.P_form1 input:hover,
+.P_form2 input:hover {
+  border-color: rgba(179, 91, 11, 0.5) !important;
+}
+
+.P_form_text3 .ant-picker-focused,
+.P_form1 input:focus,
+.P_form2 input:focus {
+  border-color: rgba(179, 91, 11, 0.5) !important;
+  box-shadow: none !important;
+}
+
+.P_form_col1 {
+  width: 183px;
+}
+
+.P_form1 .ant-form-item-label label,
+.P_form2 .ant-form-item-label label {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  color: #23221f;
+}
+
+.P_form_col2 {
+  width: 103px;
+  margin-left: 35px;
+}
+
+.P_col2_span {
+  position: absolute;
+  padding-left: 8px;
+  top: 12px;
+}
+
+.P_form_col3 {
+  width: 184px;
+}
+
+.P_form_input {
+  margin-top: -26px;
+}
+
+.P_form_text1,
+.P_form_text2,
+.P_form_text3,
+.P_form_text4 {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.P_form_text1 input,
+.P_form_text2 input,
+.P_form_text3 .ant-picker,
+.P_form_text4 input {
+  margin-top: -10px;
+}
+
+.P_form_text1 input {
+  width: 351px;
+}
+
+.P_form_text2 input {
+  width: 183px;
+}
+
+.P_form2 {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  left: 970px;
+  top: 300px;
+}
+
+.P_form_text3 input {
+  box-shadow: none !important;
+  border-radius: 0px !important;
+}
+
+.P_form_text3 .ant-picker {
+  position: absolute;
+}
+
+.P_form_text4 {
+  width: 103px;
+}
+
+.P_submit {
+  position: absolute;
+  background: #ff000a;
+  width: 250px;
+  height: 40px;
+  top: 650px;
+  left: 1020px;
+  box-shadow: 0px 4px 0px 0px #bd000b;
+  border-radius: 10px;
+}
+
+.P_submit:hover {
+  background: #ff000a !important;
+}
+
+.P_submit span {
+  font-family: "iCiel Koni Black";
+  font-weight: 900;
+  font-size: 26px;
+  line-height: 25px;
+  letter-spacing: 0.06em;
+  color: #ffffff;
+}
