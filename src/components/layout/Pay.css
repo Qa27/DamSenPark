@@ -124,6 +124,14 @@
 
 .P_form_text3 .ant-picker {
   position: absolute;
+  width: 300px;
+}
+
+.P_schedule {
+  position: absolute;
+  left: 310px;
+  top:  -11px;
+  filter: drop-shadow(0px 3px 2px #de9959);
 }
 
 .P_form_text4 {

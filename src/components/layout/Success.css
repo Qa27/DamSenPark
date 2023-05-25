@@ -1,0 +1,162 @@
+.S_title {
+  position: absolute;
+  left: 411px;
+  top: 100px;
+  font-family: "iCiel Koni Black";
+  font-weight: 900;
+  font-size: 64px;
+  line-height: 100px;
+  color: #ffffff;
+}
+
+.S_box {
+  background-color: #fde8b3;
+  position: absolute;
+  width: 1230px;
+  height: 470px;
+  top: 220px;
+  left: 190px;
+  border-radius: 30px;
+  box-shadow: 0px 13px 0px 0px #ffca7b;
+}
+
+.S_dash {
+  position: absolute;
+  width: 1210px;
+  height: 450px;
+  top: 7.5px;
+  left: 7.5px;
+  border-radius: 20px;
+  border: 2px dashed #ffb489;
+}
+
+.S_betraiqr {
+  position: absolute;
+  width: 230px;
+  height: 430px;
+  top: 300px;
+  z-index: 1;
+}
+
+.S_btntrai {
+  position: absolute;
+  width: 53px;
+  height: 56px;
+  top: 211px;
+  left: 18px;
+}
+
+.S_btnphai {
+  position: absolute;
+  width: 53px;
+  height: 56px;
+  top: 211px;
+  left: 1114px;
+}
+
+.S_box_all {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  position: absolute;
+  margin-left: 75px;
+}
+
+.S_box_qr {
+  padding: 0px 0px 32px;
+  width: 250px;
+  height: 340px;
+  margin-top: -10px;
+  margin-left: 15px;
+  background: #ffffff;
+  border-radius: 16px;
+}
+
+.S_box_qr .ant-qrcode {
+  top: 20px;
+  margin: auto;
+  border: none;
+}
+
+.S_qr_count {
+  display: flex;
+  justify-content: center;
+  margin-top: 25px;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 39px;
+  color: #000000;
+  text-transform: uppercase;
+}
+
+.S_qr_title {
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 29px;
+  color: #ffc226;
+  text-transform: uppercase;
+}
+
+.S_qr__ {
+  color: #000000;
+}
+
+.S_qr_date {
+  display: flex;
+  justify-content: center;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: #23221f;
+}
+
+.S_tick {
+  display: flex;
+  margin: auto;
+  border: none;
+  width: 38px;
+  height: 38px;
+  margin-top: 10px;
+}
+
+.S_ticket_count {
+  position: absolute;
+  top: 420px;
+  left: 100px;
+  width: 147px;
+  height: 30px;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 30px;
+  color: #23221f;
+}
+
+.btn_down_qr {
+  position: absolute;
+  top: 715px;
+  left: 590px;
+  width: 160px;
+  height: 40px;
+  background: #ff000a;
+  border-radius: 10px;
+  border: none;
+  box-shadow: 0px 4px 0px 0px #bd000b;
+}
+
+.btn_down_qr span {
+  font-family: "iCiel Koni Black";
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 26px;
+  color: #ffffff;
+}
+
+.btn_down_qr:hover {
+  background: #ff000a !important;
+}
+
+.btn_down_email{
+    margin-left: 200px;
+}

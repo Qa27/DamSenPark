@@ -7,6 +7,7 @@ import BG1 from "./components/assets/BG1.png";
 import { EventDetail } from "./components/layout/EventDetail";
 import { Contact } from "./components/layout/Contact";
 import { Pay } from "./components/layout/Pay";
+import { Success } from "./components/layout/Success";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/event/detail" Component={EventDetail} />
         <Route path="/contact" Component={Contact} />
         <Route path="/pay" Component={Pay} />
+        <Route path="/pay/payment_success" Component={Success} />
       </Routes>
     </div>
   );

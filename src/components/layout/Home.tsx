@@ -22,6 +22,9 @@ import {
   Select,
 } from "antd";
 import { useNavigate } from "react-router-dom";
+import { Dayjs } from "dayjs";
+import { Timestamp, addDoc, collection } from "firebase/firestore/lite";
+import { db } from "../../Server/firebase";
 
 const { Option } = Select;
 
@@ -31,14 +34,19 @@ export const Home = () => {
   const [openDD, setOpenDD] = useState(false);
   const [openSche, setOpenSche] = useState(false);
   const selectRef = React.useRef<RefSelectProps>(null);
+  const [numberTicket, setNumberTicket] = useState("");
+  const [selectedDate, setSelectedDate] = useState<Dayjs | null>(null);
+  const [fullName, setFullName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [address, setAddress] = useState("");
 
-  const handleDD = (selectValue: any) => {
-    setSelectValue(selectValue);
+  const handleDD = (value: string) => {
+    setSelectValue(value);
     setOpenDD(false);
   };
 
-  const handleSche = (selectValue: any) => {
-    setSelectValue(selectValue);
+  const handleSche = (date: any) => {
+    setSelectedDate(date);
     setOpenSche(false);
   };
 
@@ -50,8 +58,25 @@ export const Home = () => {
     setOpenSche((prevOpen) => !prevOpen);
   };
 
-  const onSubmitBtn = () => {
-    navigate("/pay");
+  const onSubmitBtn = async () => {
+    if (
+      selectValue &&
+      numberTicket &&
+      selectedDate &&
+      fullName &&
+      phoneNumber &&
+      address
+    ) {
+      await addDoc(collection(db, "ticket"), {
+        selectCombo: selectValue,
+        numberTicket: numberTicket,
+        selectedDate: Timestamp.fromDate(selectedDate.toDate()),
+        fullName: fullName,
+        phoneNumber: phoneNumber,
+        address: address,
+      });
+      navigate("/pay");
+    }
   };
 
   return (
@@ -111,8 +136,7 @@ export const Home = () => {
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
           style={{ maxWidth: 600 }}
-          //   onFinish={onFinish}
-          //   onFinishFailed={onFinishFailed}
+          // onFinish={onSubmitBtn}
           autoComplete="off"
         >
           <Form.Item className="H_form_combo" name="combo">
@@ -122,7 +146,9 @@ export const Home = () => {
               onChange={handleDD}
               placeholder="Các loại vé"
               suffixIcon={<></>}
+              // value={selectValue}
             >
+              {/* <Option value="">Các loại vé</Option> */}
               <Option value="Vé trọn gói">Vé trọn gói</Option>
               <Option value="Vé vào cổng">Vé vào cổng</Option>
             </Select>
@@ -133,7 +159,13 @@ export const Home = () => {
           <Row>
             <Col span={8}>
               <Form.Item className="H_form_col1" name="number">
-                <Input placeholder="Số lượng vé" />
+                <Input
+                  placeholder="Số lượng vé"
+                  value={numberTicket}
+                  onChange={(e: any) => {
+                    setNumberTicket(e.target.value);
+                  }}
+                />
               </Form.Item>
             </Col>
             <Col span={8}>
@@ -154,13 +186,34 @@ export const Home = () => {
             </Col>
           </Row>
           <Form.Item name="fullname">
-            <Input className="H_form_input" placeholder="Họ và tên" />
+            <Input
+              className="H_form_input"
+              placeholder="Họ và tên"
+              value={fullName}
+              onChange={(e: any) => {
+                setFullName(e.target.value);
+              }}
+            />
           </Form.Item>
           <Form.Item name="phone">
-            <Input className="H_form_input" placeholder="Số điện thoại" />
+            <Input
+              className="H_form_input"
+              placeholder="Số điện thoại"
+              value={phoneNumber}
+              onChange={(e: any) => {
+                setPhoneNumber(e.target.value);
+              }}
+            />
           </Form.Item>
           <Form.Item name="address">
-            <Input className="H_form_input" placeholder="Địa chỉ email" />
+            <Input
+              className="H_form_input"
+              placeholder="Địa chỉ email"
+              value={address}
+              onChange={(e: any) => {
+                setAddress(e.target.value);
+              }}
+            />
           </Form.Item>
           <Form.Item>
             <Button
