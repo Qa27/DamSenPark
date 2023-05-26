@@ -23,8 +23,9 @@ import {
 } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Dayjs } from "dayjs";
-import { Timestamp, addDoc, collection } from "firebase/firestore/lite";
-import { db } from "../../Server/firebase";
+import { useDispatch } from "react-redux";
+import { OrderActions } from "../../store/actions/OrderActions";
+import { AppDispatch } from "../../store/store";
 
 const { Option } = Select;
 
@@ -39,6 +40,8 @@ export const Home = () => {
   const [fullName, setFullName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [address, setAddress] = useState("");
+
+  const dispatch: AppDispatch = useDispatch();
 
   const handleDD = (value: string) => {
     setSelectValue(value);
@@ -59,23 +62,19 @@ export const Home = () => {
   };
 
   const onSubmitBtn = async () => {
-    if (
-      selectValue &&
-      numberTicket &&
-      selectedDate &&
-      fullName &&
-      phoneNumber &&
-      address
-    ) {
-      await addDoc(collection(db, "ticket"), {
-        selectCombo: selectValue,
-        numberTicket: numberTicket,
-        selectedDate: Timestamp.fromDate(selectedDate.toDate()),
-        fullName: fullName,
-        phoneNumber: phoneNumber,
-        address: address,
-      });
+    const formData = {
+      combo: selectValue,
+      number: numberTicket,
+      date: selectedDate,
+      fullname: fullName,
+      phone: phoneNumber,
+      address: address,
+    };
+    try {
+      await dispatch(OrderActions(formData));
       navigate("/pay");
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -136,7 +135,6 @@ export const Home = () => {
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
           style={{ maxWidth: 600 }}
-          // onFinish={onSubmitBtn}
           autoComplete="off"
         >
           <Form.Item className="H_form_combo" name="combo">

@@ -1,21 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Header } from "../header/Header";
 import "./Pay.css";
 import boxpay from "../assets/boxpay.png";
 import bepay from "../assets/bepay.png";
 import schedule from "../assets/schedule.svg";
-import { Button, Col, DatePicker, Form, Input, Row, Select } from "antd";
+import { Button, Col, DatePicker, Form, Input, Row } from "antd";
 import { useNavigate } from "react-router-dom";
-import { Timestamp, collection, getDocs } from "firebase/firestore/lite";
-import { db } from "../../Server/firebase";
+import { Timestamp } from "firebase/firestore/lite";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/store";
 
 interface Ticket {
   id: string;
-  selectCombo: string;
-  numberTicket: number;
-  selectDate: Timestamp;
-  fullName: string;
-  phoneNumber: number;
+  combo: string;
+  number: number;
+  date: Timestamp;
+  fullname: string;
+  phone: number;
   address: string;
 }
 
@@ -23,9 +24,11 @@ export const Pay = () => {
   const navigate = useNavigate();
   const [selectValue, setSelectValue] = useState("");
   const [openSche, setOpenSche] = useState(false);
-  const [payTicket, setPayTicket] = useState<Ticket[]>([]);
-  const [fullName, setFullName] = useState("");
   const [selectDate, setSelectDate] = useState("");
+
+  const formData = useSelector(
+    (state: RootState) => state.ticket.formData
+  ) as Ticket;
 
   const handleSche = (selectValue: any) => {
     setSelectValue(selectValue);
@@ -36,26 +39,12 @@ export const Pay = () => {
     setOpenSche((prevOpen) => !prevOpen);
   };
 
-  async function getCities(db: any) {
-    const citiesCol = collection(db, "ticket");
-    const citySnapshot = await getDocs(citiesCol);
-    const cityList = citySnapshot.docs.map((doc) => ({
-      ...(doc.data() as Ticket),
-      id: doc.id,
-      // fullName: doc.data().fullName,
-      // selectDate: doc.data().selectDate.toDate?.().toLocaleDateString(),
-    }));
-    setPayTicket(cityList);
-    console.log(payTicket);
-  }
-  
-  useEffect(() => {
-    getCities(db);
-  }, []);
-
   const onSubmitBtn = () => {
     navigate("/pay/payment_success");
   };
+
+  console.log(formData)
+  console.log(formData.combo)
 
   return (
     <div>
@@ -80,7 +69,11 @@ export const Pay = () => {
                   label="Số tiền thanh toán"
                   name="amount"
                 >
-                  <Input placeholder="Tổng tiền" disabled value={fullName} />
+                  <Input
+                    placeholder="Tổng tiền"
+                    disabled
+                    value={formData.combo}
+                  />
                 </Form.Item>
               </Col>
               <Col span={8}>
@@ -89,7 +82,11 @@ export const Pay = () => {
                   label="Số lượng vé"
                   name="number"
                 >
-                  <Input placeholder="Số lượng vé" disabled />
+                  <Input
+                    placeholder="Số lượng vé"
+                    disabled
+                    value={formData.number}
+                  />
                   <span className="P_col2_span">vé</span>
                 </Form.Item>
               </Col>
@@ -97,7 +94,7 @@ export const Pay = () => {
                 <Form.Item
                   className="P_form_col3"
                   label="Ngày sử dụng"
-                  name="number"
+                  name="date"
                 >
                   <Input
                     placeholder="Ngày sử dụng"
@@ -113,17 +110,25 @@ export const Pay = () => {
                 label="Thông tin liên hệ"
                 name="fullname"
               >
-                <Input placeholder="Họ tên" disabled />
+                <Input
+                  placeholder="Họ tên"
+                  disabled
+                  // value={formData.fullname}
+                />
               </Form.Item>
               <Form.Item
                 className="P_form_text2"
                 label="Điện thoại"
-                name="number"
+                name="phone"
               >
-                <Input placeholder="0123456789" disabled />
+                <Input
+                  placeholder="0123456789"
+                  disabled
+                  // value={formData.phone}
+                />
               </Form.Item>
               <Form.Item className="P_form_text1" label="Email" name="email">
-                <Input type="email" placeholder="Email" disabled />
+                <Input type="email" placeholder="Email" />
               </Form.Item>
             </div>
           </div>
