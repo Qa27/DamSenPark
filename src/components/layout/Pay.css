@@ -33,15 +33,22 @@
   top: 300px;
 }
 
+/* .P_verium,
+.P_numcard, */
 .P_form_text3 .ant-picker,
 .P_form1 input,
 .P_form2 input {
   background: #ffffff !important;
   box-shadow: inset -1px 3px 3px rgba(179, 91, 11, 0.5) !important;
-  border-radius: 16px;
   height: 46px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  color: #23221f;
 }
 
+.P_verium:hover,
+.P_numcard:hover,
 .P_form_text3 .ant-picker:hover,
 .P_form1 input:hover,
 .P_form2 input:hover {
@@ -94,6 +101,8 @@
   margin-top: 10px;
 }
 
+.P_verium,
+.P_numcard,
 .P_form_text1 input,
 .P_form_text2 input,
 .P_form_text3 .ant-picker,
@@ -101,9 +110,14 @@
   margin-top: -10px;
 }
 
+.P_numcard,
 .P_form_text1 input {
   width: 351px;
 }
+
+/* .P_numcard {
+  text-align: center;
+} */
 
 .P_form_text2 input {
   width: 183px;
@@ -127,13 +141,21 @@
   width: 300px;
 }
 
+.P_form_text3 .ant-picker input {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 26px;
+  color: #23221f;
+}
+
 .P_schedule {
   position: absolute;
   left: 310px;
-  top:  -11px;
+  top: -11px;
   filter: drop-shadow(0px 3px 2px #de9959);
 }
 
+.P_verium,
 .P_form_text4 {
   width: 103px;
 }

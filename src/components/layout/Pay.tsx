@@ -4,11 +4,14 @@ import "./Pay.css";
 import boxpay from "../assets/boxpay.png";
 import bepay from "../assets/bepay.png";
 import schedule from "../assets/schedule.svg";
-import { Button, Col, DatePicker, Form, Input, Row } from "antd";
+import { Button, Col, DatePicker, Form, Input, InputNumber, Row } from "antd";
 import { useNavigate } from "react-router-dom";
-import { Timestamp } from "firebase/firestore/lite";
+import { Timestamp, addDoc, collection } from "firebase/firestore/lite";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store/store";
+import { Dayjs } from "dayjs";
+import { toast } from "react-toastify";
+import { db } from "../../Server/firebase";
 
 interface Ticket {
   id: string;
@@ -22,16 +25,25 @@ interface Ticket {
 
 export const Pay = () => {
   const navigate = useNavigate();
-  const [selectValue, setSelectValue] = useState("");
   const [openSche, setOpenSche] = useState(false);
-  const [selectDate, setSelectDate] = useState("");
+  const [numCard, setNumCard] = useState<number | null>(1);
+  const [nameCard, setNameCard] = useState("");
+  const [expirationDate, setExpirationDate] = useState<Dayjs | null>(null);
+  const [veriNum, setVeriNum] = useState<number | null>(1);
 
   const formData = useSelector(
     (state: RootState) => state.ticket.formData
   ) as Ticket;
 
-  const handleSche = (selectValue: any) => {
-    setSelectValue(selectValue);
+  // console.log(formData)
+  // console.log(formData.combo)
+
+  const formattedNumber = (num: any) => {
+    return num.toLocaleString("vi-VN");
+  };
+
+  const handleSche = (expirationDate: any) => {
+    setExpirationDate(expirationDate);
     setOpenSche(false);
   };
 
@@ -39,19 +51,69 @@ export const Pay = () => {
     setOpenSche((prevOpen) => !prevOpen);
   };
 
-  const onSubmitBtn = () => {
-    navigate("/pay/payment_success");
+  const handleNumCardLimit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+    let num = parseInt(value);
+    if (isNaN(num)) {
+      num = 0;
+    }
+    if (value.length >= 16 && e.key !== "Backspace") {
+      e.preventDefault();
+    } else {
+      setNumCard(num);
+    }
   };
 
-  console.log(formData)
-  console.log(formData.combo)
+  const handleVeriNumLimit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    const target = e.target as HTMLInputElement;
+    const value = target.value;
+    if (value.length >= 3 && e.key !== "Backspace") {
+      e.preventDefault();
+    } else {
+      setVeriNum(parseInt(value));
+    }
+  };
+
+  const onSubmitBtn = async () => {
+    if (
+      numCard &&
+      nameCard &&
+      expirationDate &&
+      veriNum &&
+      formData.combo &&
+      formData.number &&
+      formData.date &&
+      formData.fullname &&
+      formData.phone &&
+      formData.address
+    ) {
+      await addDoc(collection(db, "ticket"), {
+        numCard: numCard,
+        nameCard: nameCard,
+        expirationDate: Timestamp.fromDate(expirationDate.toDate()),
+        veriNum: veriNum,
+        combo: formData.combo,
+        numberTicket: formData.number,
+        fullName: formData.fullname,
+        phone: formData.phone,
+        address: formData.address,
+      });
+      // navigate("/pay/payment_success");
+      console.log("Thành công");
+    } else {
+      toast.error("Please complete all information!");
+    }
+  };
+
+  console.log(numCard);
+  console.log(veriNum);
 
   return (
     <div>
       <Header />
       <span className="P_title">Thanh toán</span>
       <img className="bepay" src={bepay} alt="" />
-
       <img className="boxpay" src={boxpay} alt="" />
       <div>
         <Form
@@ -60,6 +122,7 @@ export const Pay = () => {
           wrapperCol={{ span: 24 }}
           style={{ maxWidth: 600 }}
           autoComplete="off"
+          // onFinish={onSubmitBtn}
         >
           <div className="P_form1">
             <Row className="P_col">
@@ -67,13 +130,20 @@ export const Pay = () => {
                 <Form.Item
                   className="P_form_col1"
                   label="Số tiền thanh toán"
-                  name="amount"
+                  name="combo"
                 >
                   <Input
                     placeholder="Tổng tiền"
                     disabled
-                    value={formData.combo}
+                    value={
+                      formData.combo === "Vé trọn gói"
+                        ? `${formattedNumber(450000 * formData.number)} vnđ`
+                        : formData.combo === "Vé vào cổng"
+                        ? `${formattedNumber(80000 * formData.number)} vnđ`
+                        : ""
+                    }
                   />
+                  <span></span>
                 </Form.Item>
               </Col>
               <Col span={8}>
@@ -99,8 +169,9 @@ export const Pay = () => {
                   <Input
                     placeholder="Ngày sử dụng"
                     disabled
-                    value={selectDate}
+                    value={formData.date.toDate?.().toLocaleDateString()}
                   />
+                  <span></span>
                 </Form.Item>
               </Col>
             </Row>
@@ -113,8 +184,9 @@ export const Pay = () => {
                 <Input
                   placeholder="Họ tên"
                   disabled
-                  // value={formData.fullname}
+                  value={formData.fullname}
                 />
+                <span></span>
               </Form.Item>
               <Form.Item
                 className="P_form_text2"
@@ -124,11 +196,18 @@ export const Pay = () => {
                 <Input
                   placeholder="0123456789"
                   disabled
-                  // value={formData.phone}
+                  value={formData.phone}
                 />
+                <span></span>
               </Form.Item>
               <Form.Item className="P_form_text1" label="Email" name="email">
-                <Input type="email" placeholder="Email" />
+                <Input
+                  type="email"
+                  placeholder="Email"
+                  disabled
+                  value={formData.address}
+                />
+                <span></span>
               </Form.Item>
             </div>
           </div>
@@ -138,10 +217,21 @@ export const Pay = () => {
               label="Số thẻ"
               name="cardnumber"
             >
-              <Input placeholder="1111 1111 1111 1111" />
+              <InputNumber
+                className="P_numcard"
+                onKeyDown={handleNumCardLimit}
+                placeholder="1111 1111 1111 1111"
+                value={numCard}
+              />
             </Form.Item>
             <Form.Item className="P_form_text1" label="Họ tên" name="fullname">
-              <Input placeholder="Họ tên chủ thẻ" />
+              <Input
+                placeholder="Họ tên chủ thẻ"
+                value={nameCard}
+                onChange={(e) => {
+                  setNameCard(e.target.value);
+                }}
+              />
             </Form.Item>
             <Form.Item
               className="P_form_text3"
@@ -154,13 +244,19 @@ export const Pay = () => {
                 suffixIcon={<></>}
                 placeholder="Ngày hết hạn"
                 format="DD/MM/YYYY"
+                value={expirationDate}
               />
               <Button type="link" onClick={ScheduleBtn}>
                 <img className="P_schedule" src={schedule} alt="" />
               </Button>
             </Form.Item>
             <Form.Item className="P_form_text4" label="CVV/CVC" name="email">
-              <Input placeholder="000" />
+              <InputNumber
+               className="P_verium"
+                onKeyDown={handleVeriNumLimit}
+                placeholder="000"
+                value={veriNum}
+              />
             </Form.Item>
           </div>
           <Form.Item>
