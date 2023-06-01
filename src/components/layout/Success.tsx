@@ -29,19 +29,20 @@ export const Success = () => {
   const qrCodesPerPage = 4;
 
   const downloadQRCode = () => {
-    const canvas = document
-      .getElementById("myqrcode")
-      ?.querySelector<HTMLCanvasElement>("canvas");
-    if (canvas) {
+    const canvases = document.querySelectorAll<HTMLCanvasElement>(
+      "#qrCode canvas"
+    );
+    canvases.forEach((canvas, index) => {
       const url = canvas.toDataURL();
       const a = document.createElement("a");
-      a.download = "QRCode.png";
+      a.download = `QRCode${index + 1}.png`;
       a.href = url;
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
-    }
+    });
   };
+  
 
   async function getCities(db: any) {
     const citiesCol = collection(db, "ticket");
@@ -59,18 +60,18 @@ export const Success = () => {
   }, []);
 
   // Xét từ localStorage có r thì hoi chưa có thì tạo random
-  const storedCode = localStorage.getItem("qrCode");
+  const storedCode = sessionStorage.getItem("qrCode");
   let qrCode: string;
   if (storedCode) {
     qrCode = storedCode;
   } else {
     qrCode = "Qa" + Math.random().toString(36).substring(7);
-    localStorage.setItem("qrCode", qrCode);
+    sessionStorage.setItem("qrCode", qrCode);
   }
 
   const data = ticket.flatMap((item) =>
     Array.from({ length: item.numberTicket }, (_, index) => ({
-      value: qrCode,
+      value: qrCode + index,
       count: "Vé " + (index + 1),
       title: "Vé cổng",
       date: item.expirationDate.toDate().toLocaleDateString(),
@@ -117,7 +118,7 @@ export const Success = () => {
           </Button>
           <div className="S_box_all">
             {paginatedData.map((item) => (
-              <div className="S_box_qr">
+              <div className="S_box_qr" id="qrCode">
                 <QRCode value={item.value} />
                 <span className="S_qr_count">{item.count}</span>
                 <span className="S_qr_title">{item.title}</span>
