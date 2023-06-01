@@ -157,6 +157,17 @@
   background: #ff000a !important;
 }
 
-.btn_down_email{
-    margin-left: 200px;
+.btn_down_email {
+  margin-left: 200px;
+}
+
+.S_ticket_page {
+  position: absolute;
+  left: 1065px;
+  top: 420px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  color: #23221f;
+  opacity: 0.5;
 }

@@ -4,7 +4,7 @@ import "./Pay.css";
 import boxpay from "../assets/boxpay.png";
 import bepay from "../assets/bepay.png";
 import schedule from "../assets/schedule.svg";
-import { Button, Col, DatePicker, Form, Input, InputNumber, Row } from "antd";
+import { Button, Col, DatePicker, Form, Input, Row } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Timestamp, addDoc, collection } from "firebase/firestore/lite";
 import { useSelector } from "react-redux";
@@ -26,10 +26,10 @@ interface Ticket {
 export const Pay = () => {
   const navigate = useNavigate();
   const [openSche, setOpenSche] = useState(false);
-  const [numCard, setNumCard] = useState<number | null>(1);
+  const [numCard, setNumCard] = useState("");
   const [nameCard, setNameCard] = useState("");
   const [expirationDate, setExpirationDate] = useState<Dayjs | null>(null);
-  const [veriNum, setVeriNum] = useState<number | null>(1);
+  const [veriNum, setVeriNum] = useState("");
 
   const formData = useSelector(
     (state: RootState) => state.ticket.formData
@@ -49,30 +49,6 @@ export const Pay = () => {
 
   const ScheduleBtn = () => {
     setOpenSche((prevOpen) => !prevOpen);
-  };
-
-  const handleNumCardLimit = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const target = e.target as HTMLInputElement;
-    const value = target.value;
-    let num = parseInt(value);
-    if (isNaN(num)) {
-      num = 0;
-    }
-    if (value.length >= 16 && e.key !== "Backspace") {
-      e.preventDefault();
-    } else {
-      setNumCard(num);
-    }
-  };
-
-  const handleVeriNumLimit = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    const target = e.target as HTMLInputElement;
-    const value = target.value;
-    if (value.length >= 3 && e.key !== "Backspace") {
-      e.preventDefault();
-    } else {
-      setVeriNum(parseInt(value));
-    }
   };
 
   const onSubmitBtn = async () => {
@@ -98,9 +74,10 @@ export const Pay = () => {
         fullName: formData.fullname,
         phone: formData.phone,
         address: formData.address,
+        nowDate: Timestamp.now()
       });
-      // navigate("/pay/payment_success");
-      console.log("Thành công");
+      navigate("/pay/payment_success");
+      // console.log("Thành công");
     } else {
       toast.error("Please complete all information!");
     }
@@ -217,9 +194,11 @@ export const Pay = () => {
               label="Số thẻ"
               name="cardnumber"
             >
-              <InputNumber
+              <Input
                 className="P_numcard"
-                onKeyDown={handleNumCardLimit}
+                onChange={(e) => {
+                  setNumCard(e.target.value);
+                }}
                 placeholder="1111 1111 1111 1111"
                 value={numCard}
               />
@@ -251,9 +230,11 @@ export const Pay = () => {
               </Button>
             </Form.Item>
             <Form.Item className="P_form_text4" label="CVV/CVC" name="email">
-              <InputNumber
-               className="P_verium"
-                onKeyDown={handleVeriNumLimit}
+              <Input
+                className="P_verium"
+                onChange={(e) => {
+                  setVeriNum(e.target.value);
+                }}
                 placeholder="000"
                 value={veriNum}
               />
